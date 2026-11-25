@@ -40,3 +40,15 @@ hold. Right cell: what the principals said it meant, attributed.
 Read in that order, the row is a complete news item. Read in
 reverse, it is a claim looking for its event, which is why the
 order is fixed by the design and recorded in EDITION.md.
+
+## The escalation word
+
+Moscow's warning used the language of escalation and dangerous
+trends while declining to comment on the attacks themselves.
+That combination is a recognised diplomatic posture: signal
+consequence without conceding the fact that would demand one.
+The reaction dossier records both halves, the warning and the
+decline, because printing only the warning would make the
+posture look like a commitment, and printing only the decline
+would make it look like indifference. Neither reading is the
+record.

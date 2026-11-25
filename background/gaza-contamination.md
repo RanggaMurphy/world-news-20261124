@@ -41,3 +41,17 @@ An environmental agency or a UN body publishing sampling results
 from the territory, confirming or bounding the 99% coverage
 figure. Until then the number stands as one named body's
 finding, printed as exactly that.
+
+## Why the strip needed this figure
+
+The numbers strip is the page's smallest section and its most
+quotable: figures travel further than headlines, usually without
+their context. That is precisely why the strip's lead figure had
+to be the day's most checkable number and why its label carries
+the attribution in full. A strip built from the paper's own
+counts (stories carried, outlets tracked) would be safe and
+worthless. The Oxfam figure is neither: it is the edition's one
+number a reader can take away, and the edition is responsible
+for it travelling with its source attached, which the design
+guarantees by setting the attribution in the same line, at the
+same weight, every time the figure appears.

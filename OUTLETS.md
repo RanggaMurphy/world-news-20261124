@@ -126,14 +126,15 @@ by construction changes nothing.
   from its copy, and its factory-fire report anchored the toll.
 - **DW** contributed the missing-persons framing for the fire,
   which the headline keeps because it was still the live fact.
-- **AP News** was treated as the wire of record for the court
-  ruling's sequence: pause first, clearance second.
-- **CBS News** framed the sinking around drone reach, the angle
-  the context paragraph adopts.
-- **Reuters** anchored the sanctioned status of the cargo ship, a
-  legal fact the page states only because Reuters carried it.
-- **BBC** (the analysis brand) supplied the divided-world reading
-  of COP31, printed as an argument and labelled as one.
+- **AP News** set the sequence the page trusts for the court
+  ruling: the pause happened first, the clearance second.
+- **CBS News** framed the sinking around how far the drones
+  reached, and the context paragraph follows that framing.
+- **Reuters** is the authority for the cargo ship's sanctioned
+  status, a legal fact the page states only on Reuters' word.
+- **BBC** (the analysis brand) read COP31 as a portrait of a
+  divided world; the page prints the reading as an argument and
+  labels it as one.
 
 ## Feed mechanics
 

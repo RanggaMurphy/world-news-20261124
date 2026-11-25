@@ -137,34 +137,33 @@ about.
 
 ## Headline fidelity
 
-Headlines were taken from the carrying outlets as published. The
-one editorial liberty in this edition is punctuation: the Oxfam
-headline's inner quotation marks are single quotes in the page's
-serif, matching the outlets' own rendering. No headline was
-rewritten to sharpen it, and no number in a headline or in the
-strip was rounded: the day offered exactly one hard figure, 99%,
-and it is printed as reported.
+Every headline on the page is a carrying outlet's headline as
+published. One liberty only was taken, and it is typographic:
+the Oxfam headline's quotation marks are single in the page's
+serif, as they are in the outlets' own rendering. Nothing was
+rewritten for sharpness, and no number was rounded anywhere, in
+a headline or in the strip. The day produced one hard figure,
+99%, and the page prints it exactly as reported.
 
 ## Selection notes
 
-The seven stories are what the two-outlet rule produced from the
-day's feeds, not a balanced ticket assembled by hand. Three
-consequences are worth recording:
+Seven stories is simply what the two-outlet rule yielded from
+the day's feeds; nobody assembled a balanced ticket by hand.
+Three consequences deserve a line each:
 
-- There is no sports story and no markets story on the page,
-  because none in the day's feeds was carried by two of the
-  tracked outlets in a form that fit the format. The rule, not a
-  preference, kept them off.
-- Two of the seven stories are the same event (the Libya strike)
-  from different wire pairs. The rule counts carriers per story,
-  and each telling independently passed it; merging them would
-  have produced a stronger single story but a less honest record
-  of how the news actually arrived.
-- The Gaza story is an assessment published on the day, not an
-  event of the day. It was selected because two BBC brands carried
-  it as a lead item and because its figure, 99%, was the day's
-  most checkable number. Its presence is also why the numbers
-  strip leads with a figure from the news instead of a count.
+- Sports and markets are absent because no story in either
+  field, in the day's feeds, had two of the tracked outlets
+  behind it in a form the format could carry. The rule excluded
+  them; no preference did.
+- The Libya strike appears twice, once per wire pair. The rule
+  counts carriers per story, and each telling passed it on its
+  own. A merged version would have read stronger and recorded
+  less honestly how the news arrived.
+- Gaza is present as an assessment published that day rather
+  than an event of the day. Two BBC brands led with it, and its
+  99% was the day's most checkable figure, which is also why the
+  numbers strip opens with a figure from the news instead of a
+  count of the paper itself.
 
 ## The confirmation paths
 

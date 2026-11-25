@@ -184,3 +184,28 @@ with no body text the only way to show both is to print both.
 The duplication is the design, and `SOURCES.md` records the
 reasoning so a future editor does not "fix" it by accident.
 
+## A word about the date line
+
+The date sits directly under the masthead at near-title size,
+which readers of the first editions questioned: why give a date
+the typographic weight of a headline? Because a one-image paper
+has no URL bar, no timestamp metadata a reader can trust, and
+no "updated" line. The date on the page is the page's only
+proof of when it speaks from. Set small, it reads as furniture;
+set at title scale, it reads as a claim, and a claim can be
+checked. Every other element of the edition can be verified
+against the day's record only once the day itself is fixed, so
+the day is fixed in the largest type the layout allows after
+the paper's own name.
+
+## What a second day would change
+
+Nothing in the format, and everything in the content: the
+features would be re-earned by that day's feeds under the same
+rules, the strip would take that day's hardest figure, and this
+companion would be rewritten from that day's record. The format
+is the standing part; an edition is the day's part. Readers who
+keep two editions side by side should be able to see the same
+paper thinking about two different days, which is the whole
+point of fixing the geometry and freeing the selection.
+

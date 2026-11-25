@@ -39,3 +39,15 @@ fires are feared, which the word "feared" in the copy reflects.
   from a toll story into an accountability story.
 - The owner's and the regulator's statements, which the first
   cycle rarely contains and the second cycle must.
+
+## Why this briefing is careful with the word "fears"
+
+Wire copy about industrial disasters uses "feared dead" for the
+missing whose survival is doubtful, and the phrase does real
+work: it tells the reader the missing count and the death toll
+are expected to converge. The page's headline does not use it,
+because the carriers' headlines did not; the context record
+does, because the carriers' body copy did. Keeping the phrase in
+its place is a small instance of the edition's largest rule:
+every word on the page should be traceable to the copy the page
+is built from, at the strength that copy used it.

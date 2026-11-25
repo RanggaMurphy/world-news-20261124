@@ -137,6 +137,39 @@ def check_desk_notes(data):
           "weakest confirmation pair" in joined)
 
 
+def check_dossier_urls(data):
+    """Every URL printed in a dossier must belong to its story.
+
+    Dossiers quote the articles they rest on. A URL that appears
+    in a dossier but not in the story's own record is either a
+    typo or a citation of reporting the edition never used; both
+    are errors a documents-first pass exists to catch. Stories
+    carried through the wire have no URL in the data, and their
+    dossiers say so in words instead, so the check is one-way:
+    dossier URLs must be a subset of the story's recorded URLs.
+    """
+    stories = list(data["features"]) + list(data["around"])
+    for story, rel in zip(stories, STORY_FILES):
+        text = read(rel)
+        found = re.findall(r"https?://[^\s)]+", text)
+
+        def norm(u):
+            return u.rstrip(").,").split("?")[0]
+
+        recorded = set()
+        for group in ("bbc_url", "guardian_url", "aljazeera_url",
+                      "dw_url", "urls"):
+            value = story.get(group)
+            if isinstance(value, str):
+                recorded.add(norm(value))
+            elif isinstance(value, list):
+                recorded.update(norm(u) for u in value)
+        for url in found:
+            check("dossier url belongs: " + url[:52],
+                  norm(url) in recorded,
+                  "story: " + story["headline"][:30])
+
+
 def check_cross_references(data):
     readme = read("README.md")
     for name in ["SOURCES.md", "DESIGN.md", "OUTLETS.md", "TIMELINE.md",
@@ -184,6 +217,7 @@ def main():
     check_fact_faithfulness(data)
     check_press_rules(data)
     check_desk_notes(data)
+    check_dossier_urls(data)
     check_cross_references(data)
     check_thumbs_independent(data)
     if FAILURES:

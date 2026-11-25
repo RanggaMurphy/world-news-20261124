@@ -48,3 +48,19 @@ importance: the listing would matter without it.
 - A statement from Nvidia addressing the funneling claim itself.
 - Any licence grants after listing, which would soften the act
   from a wall into a gate.
+
+## The pattern this case belongs to
+
+Listing cases follow a rhythm the desk has seen before: an
+accusation surfaces through reporting, the register act follows
+in days or weeks, and the listed firm's response arrives last,
+usually as a compliance announcement rather than a denial. The
+middle step is the only one that changes anyone's legal
+position, which is why the page leads with it. The scandal
+element inverts the rhythm: publicity arrived first and loudest,
+and the paperwork, when it publishes, will be read against a
+story the public already thinks it knows. Editors should expect
+the listing document to be reported as confirmation of the
+scandal rather than as the administrative act it is, and the
+dossier's separation of the two is the guard against that
+reading.

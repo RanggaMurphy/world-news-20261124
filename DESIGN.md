@@ -151,17 +151,16 @@ so a palette drift fails the build like a geometry drift.
 
 ## What the audit cannot see
 
-The audit proves fit, not quality. It cannot tell whether a
-headline is fair, whether a crop cuts a face in half, or whether
-the day's selection was the right one. Those judgements live in
-the editorial documents (SOURCES.md for fairness, EDITION.md for
-selection) and in the review step of the build, where a person
-reads the layout report and opens the image. The audit's role is
-narrower and, for that reason, trustworthy: it guarantees that
-whatever was decided editorially is what physically appears on
-the page, inside the boundaries the design promises. A build can
-pass the audit and still be a bad edition; it cannot pass the
-audit and be a broken page.
+Fit is all the audit proves; quality is beyond it. Whether a
+headline is fair, whether a crop halves a face, whether the day
+was selected well: none of that is visible to a geometry check.
+Those judgements are recorded where they belong (SOURCES.md for
+fairness, EDITION.md for selection) and exercised in the build's
+review step, where the layout report is read and the image is
+opened by a person. The audit's trustworthiness comes from its
+narrowness: it certifies that what was decided editorially is
+what physically appears, inside the boundaries the design
+promises. A bad edition can pass it. A broken page cannot.
 
 ## The page at other sizes
 

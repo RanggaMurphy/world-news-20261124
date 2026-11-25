@@ -38,3 +38,15 @@ nothing. The analysis piece is the format's answer, admitted
 under the house rule that argument must be labelled and doubly
 carried, and disclosed here and in OUTLETS.md as the edition's
 weakest confirmation.
+
+## What happens after a failed round
+
+Failed rounds do not end processes; they move them. The finance
+dispute typically reopens in smaller venues (fund boards,
+bilateral deals, the next round's preparatory meetings) where
+the cameras are fewer and the concessions cheaper. The dossier's
+watch item is therefore not the next summit but the first venue
+where the money question is tabled again. An edition that only
+watches summits will report the failure and miss the sequel,
+which is why the watch list in stories/06-cop31.md is written
+the way it is.

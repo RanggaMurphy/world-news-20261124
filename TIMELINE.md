@@ -157,3 +157,32 @@ research recorded it:
   its number: the report's 99% was the hardest figure available
   to the strip.
 
+## Reading the order
+
+The sequence above is the order events happened, which is not
+the order the page presents them, and the difference is the
+edition's argument in miniature. Chronology is the record's
+order: fire, ruling, sinking, reaction, report, talks, listing.
+The page's order is consequence: listing, fire, ruling, then
+the grid. Neither order is the truth on its own. Chronology
+without ranking treats a paperwork act and a mass-casualty fire
+as equals because they share a date; ranking without chronology
+hides the fact that the reaction story could only exist after
+the sinking it reacts to. This file keeps the chronology so the
+page's ranking stays honest: a reader can always reconstruct
+what the editor moved, and moving is only defensible when it
+can be seen.
+
+## The hours the record cannot give
+
+The feeds timestamped the stories' publication, not their
+events, and the two differ by hours in both directions: the
+factory fire burned on 22 November by the Guardian's dating and
+was still being reported as its toll resolved; the COP31 failure
+was the end of a process weeks long. This timeline therefore
+orders by the day the record supports and says so, rather than
+assigning clock times the desk never had. A timeline with
+invented hours would be the one document in this repository
+that a checker could not catch, which is exactly why it is not
+written that way.
+

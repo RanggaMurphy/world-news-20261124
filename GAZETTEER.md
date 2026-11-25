@@ -127,13 +127,13 @@ was deliberately not guessed at.
 
 ## Datelines
 
-A closing note on the gazetteer's own discipline: every place in
-this file is named at the precision the two-outlet record
-supports, no finer. Cities appear where the wires named them
-(Jakarta in a URL, Benghazi in the copy), regions where they did
-not, and one place, Washington, appears for its decisions rather
-than its dateline. Precision beyond the record would read as
-knowledge the edition does not have.
+The gazetteer's discipline, stated once at the end: places are
+named no more precisely than the two-outlet record allows.
+Cities appear only where the wires put them (Jakarta inside a
+URL, Benghazi inside the copy); otherwise regions carry the
+story, and Washington appears for what it decided rather than
+where a reporter stood. Finer precision would pretend to a
+knowledge this edition never had.
 
 ## Three more places the record touches
 

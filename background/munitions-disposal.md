@@ -38,3 +38,16 @@ Whether detonation is in fact the safest course. The carriers
 reported the dispute and the ruling; the engineering judgement
 belongs to the Army and the court record, and a headline page
 that pretended to hold it would be inventing expertise.
+
+## The ammunition plant as a place
+
+Ammunition plants are among the few industrial sites where a
+community lives permanently beside a stockpile it did not choose
+and cannot inspect. That standing fact explains the politics in
+the record: a governor-elect's agreement is not a courtesy but a
+recognition that the risk, however small the engineers judge it,
+is borne locally while the decision is made federally. The
+court's clearance settles the legal question; the condition in
+Trump's statement acknowledges the political one. The page
+prints the first and records the second, which is the correct
+division for a format that can carry one fact per headline.
