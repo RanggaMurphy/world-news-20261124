@@ -86,6 +86,21 @@ BBC 2, and one each for Al Jazeera, DW, CBS News and Reuters. The
 Guardian is the edition's quiet workhorse: it is the second
 confirmation on all three features.
 
+## The pair problem
+
+Two of the grid stories rest on the BBC pair, and this edition's
+documents return to that fact because it is the record's weakest
+joint. The defence is threefold. First, the feeds list the two
+brands separately, with separate article URLs, so the record
+reports what the feeds did. Second, neither story needed the
+pair to be independent in the strong sense: the COP31 analysis
+and the Oxfam report were both lead items whose facts (a failed
+talk, a published report) are events in themselves, verifiable
+from the artefacts. Third, the weakness is disclosed everywhere
+it matters: in the counting rule above, in SOURCES.md, and in
+the timeline's confirmation paths. A record that hides its weak
+joint invites distrust of the whole; this one points at it.
+
 ## Corrections and republication
 
 This note is also the edition's corrections policy, stated before
