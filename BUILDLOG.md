@@ -152,4 +152,26 @@ the fitter shrinks before it fails - but the report makes the
 shrinkage visible, and this log records it, so the next editor
 knows exactly how much room the format has left.
 
+## Numbers of this build
+
+The repository the checker and the renderer agree on, counted at
+submission time:
+
+- Seven stories, sixteen article URLs, eight outlets, twenty-nine
+  facts in the fact file, seven watch entries, five edition notes.
+- One thousand five hundred characters of context writing across
+  the seven stories, the longest 279 (Iowa) and the shortest 179
+  (COP31), inside the same order of magnitude the context check
+  enforces.
+- One image: 1024x1024, 593,900 bytes, reproduced byte for byte
+  from the committed inputs on every verification run.
+- Three programs: the entrypoint (standard library only), the
+  renderer (generator, verifier, auditor, reporter) and the
+  independent checker, which between them re-derive every number
+  the front page prints before the page is allowed to exist.
+- Eight documentation files, each with a single job: the record,
+  the design, the outlets, the timeline, the gazetteer, the
+  reading, the build log, and this file's own inventory above.
+
+
 
