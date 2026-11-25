@@ -100,3 +100,32 @@ Russian operational response in the Mediterranean (it would have
 merged the two Libya stories into one larger one and freed a
 grid slot). None had landed; the watch list in `sources.json`
 records them for the next edition.
+
+## Each story's confirmation path
+
+How each story crossed the two-outlet line, in the order the
+research recorded it:
+
+- **Megaspeed** arrived with three carriers already attached
+  (BBC News, The Guardian, Al Jazeera), the strongest confirmation
+  of the day; it was a feature from the first pass.
+- **Factory fire** likewise arrived with three (BBC News, DW,
+  The Guardian), and its still-open toll kept it a feature
+  through every later pass.
+- **Iowa** crossed on two (AP News, The Guardian) and earned its
+  feature slot on the reversal inside it: pause, then clearance.
+- **Merkury sinking** crossed on CBS News and Reuters, a wire
+  pair with no overlap in ownership, the cleanest two-outlet
+  confirmation in the grid.
+- **Libya reaction** crossed on AP News and BBC News; it is the
+  only story whose confirmation pair shares no outlet with its
+  companion story's pair, which is part of why the pair could be
+  printed as two stories.
+- **COP31** crossed on the two BBC brands, the weakest
+  confirmation of the day by the edition's own counting note;
+  it was kept because the analysis was the day's only argument
+  piece and both brands carried it as a lead.
+- **Gaza / Oxfam** crossed on the same pair, and was kept for
+  its number: the report's 99% was the hardest figure available
+  to the strip.
+

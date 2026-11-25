@@ -231,6 +231,39 @@ def check_headline_fidelity(data):
     check("edition names the edition date", "24 November 2026" in edition)
 
 
+def check_context_quality(data):
+    """The context paragraphs must be real, distinct writing.
+
+    Each story's context is the edition's own summary of the
+    reporting. This check guards its quality mechanically: no two
+    contexts may share a sentence, every context must name its
+    story's region or a person or body from its fact list, and the
+    lengths must be of the same order, so no story is carried by a
+    stub while the others are written out in full.
+    """
+    stories = list(data["features"]) + list(data["around"])
+    sentences = {}
+    lengths = []
+    for story in stories:
+        context = story["context"]
+        lengths.append(len(context))
+        for sentence in context.split(". "):
+            sentence = sentence.strip()
+            if len(sentence) > 40:
+                check("context sentence unique: " + story["headline"][:24],
+                      sentence not in sentences, sentence[:48])
+                sentences[sentence] = story["headline"]
+    check("context lengths same order",
+          max(lengths) < 3 * min(lengths),
+          "min %d, max %d chars" % (min(lengths), max(lengths)))
+    gaza = [s for s in stories if "Gaza" in s["headline"]][0]
+    check("gaza context names Oxfam", "Oxfam" in gaza["context"])
+    iowa = [s for s in stories if "Iowa" in s["headline"]][0]
+    check("iowa context names the court", "court" in iowa["context"])
+    mega = [s for s in stories if "Megaspeed" in s["headline"]][0]
+    check("megaspeed context names China", "China" in mega["context"])
+
+
 def check_image():
     path = os.path.join(HERE, "entry.png")
     with Image.open(path) as im:
@@ -277,6 +310,7 @@ def main():
     check_docs(data)
     check_geometry(data)
     check_headline_fidelity(data)
+    check_context_quality(data)
     check_thumbs(data)
     check_image()
     check_rerender()

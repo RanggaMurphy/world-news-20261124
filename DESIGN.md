@@ -131,4 +131,19 @@ Every gap in that budget is deliberate. A page with no body text
 has nothing to absorb a layout error, so the whitespace is part
 of the specification, not what is left over.
 
+## What the audit cannot see
+
+The audit proves fit, not quality. It cannot tell whether a
+headline is fair, whether a crop cuts a face in half, or whether
+the day's selection was the right one. Those judgements live in
+the editorial documents (SOURCES.md for fairness, EDITION.md for
+selection) and in the review step of the build, where a person
+reads the layout report and opens the image. The audit's role is
+narrower and, for that reason, trustworthy: it guarantees that
+whatever was decided editorially is what physically appears on
+the page, inside the boundaries the design promises. A build can
+pass the audit and still be a bad edition; it cannot pass the
+audit and be a broken page.
+
+
 

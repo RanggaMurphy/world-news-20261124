@@ -420,6 +420,35 @@ def section_map():
     ]
 
 
+def edition_digest(data):
+    """Summarise the edition's data as a list of printable lines.
+
+    The digest is the at-a-glance record the report ends with: one
+    line per story with its region, carrier count, URL count and
+    context length, then the edition-level totals. It exists so a
+    reviewer can see the shape of the data (a story with one URL,
+    a context half the length of the others) without opening the
+    JSON, and so the report and the checker are looking at the same
+    derived numbers.
+    """
+    lines = []
+    stories = list(data["features"]) + list(data["around"])
+    for i, story in enumerate(stories, 1):
+        lines.append(
+            "digest %d [%s] %s - %d outlets, %d urls, context %d chars"
+            % (i, story["region"], story["headline"],
+               len(story["outlets"]), len(story["urls"]),
+               len(story["context"])))
+    total_urls = sum(len(s["urls"]) for s in stories)
+    total_context = sum(len(s["context"]) for s in stories)
+    lines.append("digest totals: %d stories, %d urls, %d context chars, "
+                 "%d facts, %d watch entries"
+                 % (len(stories), total_urls, total_context,
+                    sum(len(v) for v in data["fact_file"].values()),
+                    len(data["watch_next"])))
+    return lines
+
+
 def layout_report(data):
     """Print a human-readable account of where everything sits.
 
@@ -459,6 +488,8 @@ def layout_report(data):
         print("story [%s] %s - carried by %s, %d urls"
               % (story["region"], story["headline"],
                  ", ".join(story["outlets"]), len(story["urls"])))
+    for line in edition_digest(data):
+        print(line)
     print("numbers strip 890-970, footer rule 982, footer text 990")
     problems = layout_audit(data)
     print("audit:", "clean" if not problems else problems)
