@@ -135,6 +135,23 @@ not, and one place, Washington, appears for its decisions rather
 than its dateline. Precision beyond the record would read as
 knowledge the edition does not have.
 
+## Three more places the record touches
+
+- **The Mediterranean** is an actor in this edition, not a
+  backdrop: it is the sea Ukraine's campaign reached, the sea
+  Libya's coast fronts, and the reason the sinking outranks a
+  Black Sea strike of the same size. The gazetteer treats seas
+  as places when the news does.
+- **The Eighth Circuit** is a place in the institutional sense:
+  a federal appeals court whose district includes Iowa, and the
+  body whose clearance is feature 3's fact. Institutional places
+  get entries when a story's outcome depends on which one acted.
+- **The export-control list** is a place in the legal sense: a
+  register a company is placed on, with consequences that follow
+  it everywhere it trades. Megaspeed's story is about being moved
+  to that place, and the headline's verb (blacklist) is the
+  register's everyday name.
+
 
 
 

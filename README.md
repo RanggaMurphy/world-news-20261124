@@ -42,6 +42,9 @@ The day in one look:
 - `EDITION.md` - the reader's companion to the page.
 - `DOSSIER.md` - index of the per-story dossiers in `stories/`.
 - `stories/` - one dossier per story: facts, selection, omissions.
+- `CONTEXT.md` - index of the background briefings in
+  `background/`.
+- `background/` - standing context for each story's subject.
 - `PRESS.md` - the house style: the standing rules every edition
   follows.
 - `check.py` - the independent checker (data-first verification).

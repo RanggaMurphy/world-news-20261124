@@ -166,4 +166,56 @@ consequences are worth recording:
   most checkable number. Its presence is also why the numbers
   strip leads with a figure from the news instead of a count.
 
+## The confirmation paths
+
+Each story reached the page by a different route, and the routes
+are worth recording because they explain the edition's shape:
+
+- **Megaspeed** was confirmed by volume: three outlets, two of
+  them with their own Washington coverage, all in the same cycle.
+  A story carried that widely does not need a second look; it
+  needs a decision about where it leads, and it led.
+- **The factory fire** was confirmed by complement: BBC and the
+  Guardian reported the event while DW supplied the headline's
+  exact shape (killed and missing). No single outlet held the
+  whole story; the page's version is the intersection of three.
+- **Iowa** was confirmed by statement: the Guardian printed
+  Trump's own words in full, and AP's independent report matched
+  them. When a story turns on what a principal said, one verbatim
+  statement plus one independent match is the strongest pair a
+  wire day offers.
+- **The Merkury sinking** was confirmed by wire independence:
+  CBS and Reuters, no shared ownership, no shared copy. The
+  cleanest confirmation of the day, and the reason a fifteen-word
+  headline could be printed without a qualifier.
+- **The Libya reaction** was confirmed by the same method one
+  step removed: AP and BBC carried the principals' words, and the
+  principals (Zelensky, the Kremlin, the Libyan government) did
+  not contradict each other about what had been said, only about
+  what it meant.
+- **COP31** was confirmed by repetition inside one owner: the
+  analysis ran as a lead item on both BBC brands. Repetition is
+  weaker than independence, which is why this story, alone on the
+  page, carries its confirmation method as a disclosed caveat.
+- **Gaza/Oxfam** was confirmed the same way, with one difference:
+  the underlying claim belongs to a named body whose report is a
+  document a reader can open. A checkable document behind a
+  repeated claim is stronger than repetition alone.
+
+## The production sequence
+
+1. The feeds were scanned and every story with two carriers was
+   listed, regardless of subject.
+2. The list was cut to seven by the selection rules in PRESS.md.
+3. sources.json was written from the record, story by story.
+4. Thumbnails were taken from the carrying articles.
+5. The page was rendered and audited; the Iowa headline's fit was
+   the only one that needed a second look.
+6. The documents were written from the same record, then the
+   checkers were run: render.py's own audit, check.py from the
+   data, verify.py from the documents.
+7. The image was committed unchanged from its first render; no
+   later step altered a pixel.
+
+
 

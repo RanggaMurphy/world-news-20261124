@@ -163,5 +163,30 @@ the page, inside the boundaries the design promises. A build can
 pass the audit and still be a bad edition; it cannot pass the
 audit and be a broken page.
 
+## The page at other sizes
+
+The page is one fixed 1024 px image, so its behaviour at other
+sizes is a property of other people's software, and the design
+anticipates three cases:
+
+- **Feed thumbnails** (a few hundred pixels wide): the masthead
+  and the feature headlines survive; the grid headlines and the
+  strip labels do not. That ordering is deliberate: the edition's
+  identity and its three decisions remain legible at the size
+  most readers will actually meet it.
+- **Full-screen reading** (the intended case): every element is
+  at its designed size, and the vertical budget is the reading
+  experience.
+- **Print**: the navy masthead prints as a heavy dark block on
+  cheap printers; the page tolerates it because no text sits on
+  the navy. The hairline rules print at the edge of visibility,
+  which is acceptable: they organise the screen version, and the
+  print version organises itself by whitespace.
+
+A design that only worked at exactly 1024 px would be a poster,
+not a newspaper page. This one degrades in the order the
+editorial priorities dictate: identity first, features second,
+grid third, apparatus last.
+
 
 

@@ -141,8 +141,15 @@ def check_cross_references(data):
     readme = read("README.md")
     for name in ["SOURCES.md", "DESIGN.md", "OUTLETS.md", "TIMELINE.md",
                  "GAZETTEER.md", "BUILDLOG.md", "EDITION.md", "DOSSIER.md",
-                 "PRESS.md", "check.py", "verify.py"]:
+                 "CONTEXT.md", "PRESS.md", "check.py", "verify.py"]:
         check("readme lists " + name, name in readme)
+    context_index = read("CONTEXT.md")
+    for rel in ["background/export-controls.md", "background/factory-fires.md",
+                "background/munitions-disposal.md", "background/naval-drones.md",
+                "background/climate-talks.md", "background/gaza-contamination.md"]:
+        check("context index lists " + rel, rel in context_index)
+        check("briefing exists: " + rel,
+              os.path.exists(os.path.join(HERE, rel)))
     dossier_index = read("DOSSIER.md")
     for rel in STORY_FILES:
         check("index lists " + rel, rel in dossier_index)

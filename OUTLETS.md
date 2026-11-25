@@ -135,4 +135,29 @@ by construction changes nothing.
 - **BBC** (the analysis brand) supplied the divided-world reading
   of COP31, printed as an argument and labelled as one.
 
+## Feed mechanics
+
+How the day's stories physically arrived, because provenance
+includes the pipe, not just the byline:
+
+- **Outlet RSS** (BBC, the Guardian, DW, Al Jazeera) delivers the
+  outlet's own headline, timestamp and lead image directly. This
+  is the preferred pipe: nothing sits between the outlet and the
+  desk.
+- **The Google News wire** aggregates the same articles with its
+  own timestamps and without lead images. Stories that arrived
+  this way (the AP, CBS and Reuters items, and the BBC analysis
+  pieces) were read at the outlet's own page before selection;
+  the wire is a discovery pipe, never the text of record.
+- Timestamps in this repository are the feeds' own. Where the two
+  pipes disagreed about a story's hour, the outlet's page won.
+- No story was selected from a headline alone: every one of the
+  seven was opened and read at the carrier's page before it
+  entered sources.json.
+- The desk tracked a fixed outlet set for the edition (the nine
+  named in the footer line). A story carried only outside that
+  set was invisible to the edition by design, and the footer says
+  so, which is the honest version of "around the world" for a
+  one-image paper.
+
 
