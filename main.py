@@ -6,6 +6,7 @@ Standard library only. The image is rendered ahead of time by render.py
 in the grader's bare Python sandbox.
 """
 
+import hashlib
 import os
 import shutil
 import sys
@@ -40,6 +41,18 @@ def main():
     if os.path.getsize(target) != os.path.getsize(source):
         print("copy size mismatch for", target, file=sys.stderr)
         return 3
+    # Size alone can hide a same-length corruption, so compare the
+    # content hash as well before declaring the copy good.
+    def digest(path):
+        h = hashlib.sha256()
+        with open(path, "rb") as fh:
+            for chunk in iter(lambda: fh.read(65536), b""):
+                h.update(chunk)
+        return h.hexdigest()
+
+    if digest(target) != digest(source):
+        print("copy content mismatch for", target, file=sys.stderr)
+        return 4
     print("copied", source, "->", target, os.path.getsize(target), "bytes")
     return 0
 

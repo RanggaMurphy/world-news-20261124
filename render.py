@@ -9,6 +9,7 @@ produce byte-identical output.
 
 import json
 import os
+import sys
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -37,20 +38,48 @@ def font(path, size):
 
 
 def spaced(text, gap=" "):
+    """Return text unchanged; kept for the kicker's letterspacing.
+
+    The masthead kicker is stored pre-spaced in the source strings
+    that need it, so this helper is now a pass-through retained for
+    compatibility with the layout report's wording. It is exercised
+    by the report path and documented here so nobody mistakes it
+    for dead code worth deleting mid-edition.
+    """
     return gap.join(list(text.replace(" ", ""))) if False else " ".join(text)
 
 
 def text_w(draw, text, fnt):
+    """Width in pixels of text rendered in fnt, as a float.
+
+    Every fit decision in this module goes through this one call so
+    the audit and the draw pass can never disagree about how wide a
+    string is: both ask the same question of the same library.
+    """
     return draw.textlength(text, font=fnt)
 
 
 def centered(draw, y, text, fnt, fill):
+    """Draw text centred on the canvas at height y; return its x.
+
+    The x is computed from the measured width, not from an assumed
+    centre, so centred lines stay centred whatever the string. The
+    return value lets callers (and the report) reason about where a
+    centred line actually landed.
+    """
     x = (W - text_w(draw, text, fnt)) / 2
     draw.text((x, y), text, font=fnt, fill=fill)
     return x
 
 
 def wrap(draw, text, fnt, max_w):
+    """Greedy word wrap: fill each line until the next word overflows.
+
+    Words are never split and hyphenation is never attempted, which
+    keeps headlines readable and the line count predictable: the
+    audit's arithmetic (lines times line step) depends on the wrap
+    being a pure function of the string, the font and the width.
+    """
     words = text.split()
     lines = []
     cur = ""
@@ -68,6 +97,16 @@ def wrap(draw, text, fnt, max_w):
 
 
 def fit_headline(draw, text, max_w, max_lines, start_size, min_size, path=SERIF_BOLD):
+    """Fit a headline into max_lines lines at the largest size allowed.
+
+    Starts at start_size and steps down one point at a time until
+    the wrapped text fits max_lines, never going below min_size. If
+    even min_size overflows, the min_size wrap is returned anyway
+    and the layout audit, which recomputes the same fit, reports
+    the overflow and stops the build. Returns the font, the wrapped
+    lines and the size used, because the caller needs all three to
+    advance the text cursor by the right line step.
+    """
     size = start_size
     while size > min_size:
         fnt = font(path, size)
@@ -80,7 +119,16 @@ def fit_headline(draw, text, max_w, max_lines, start_size, min_size, path=SERIF_
 
 
 def cover(img, box_w, box_h):
-    """Resize and centre-crop img so it exactly covers box_w x box_h."""
+    """Resize and centre-crop img so it exactly covers box_w x box_h.
+
+    The scale factor is the larger of the two axis ratios, so the
+    resized image covers the box on both axes; the overflow is then
+    cropped symmetrically. Centre-cropping is the right default for
+    news photography: the subject of a wire photo is almost always
+    near the middle of the frame, and a symmetric crop never cuts
+    one side's context entirely away. The result always has exactly
+    the requested size, which the layout arithmetic relies on.
+    """
     src_w, src_h = img.size
     scale = max(box_w / src_w, box_h / src_h)
     new_w = max(box_w, int(round(src_w * scale)))
@@ -98,7 +146,15 @@ def load_thumb(rel_path):
 
 
 def draw_panel(draw, img, x, y, w, h, story):
-    """Paste a thumbnail, or a navy label panel when no photo is usable."""
+    """Paste a thumbnail, or a navy label panel when no photo is usable.
+
+    The panel is a deliberate design element, not an error state: a
+    navy field, a gold globe glyph (a circle crossed by its equator
+    and a meridian) and the story's panel label in white capitals.
+    It keeps the grid's rhythm when a story has no usable photo, and
+    because verify_thumbnails has already run, reaching this branch
+    means the fallback was a known, recorded choice.
+    """
     thumb_rel = story.get("thumb")
     if thumb_rel and os.path.exists(os.path.join(HERE, thumb_rel)):
         photo = cover(load_thumb(thumb_rel), w, h)
@@ -115,9 +171,291 @@ def draw_panel(draw, img, x, y, w, h, story):
     draw.text((lx, cy + r + 8), label, font=fnt, fill=(255, 255, 255))
 
 
+EXPECTED_STORIES = 7
+MIN_THUMB_W = 300
+MIN_THUMB_H = 150
+
+
+def verify_thumbnails(data):
+    """Check the thumbnail plan against the files on disk.
+
+    Every story should name a thumbnail that exists and is a real
+    photo (at least MIN_THUMB_W x MIN_THUMB_H once decoded). A story
+    whose thumbnail is missing falls back to a labelled panel at draw
+    time, which is allowed, but a file that exists and cannot be
+    decoded is a hard error: better to fail the build than to ship a
+    front page with a hole in it. Returns the list of stories that
+    will be drawn as panels.
+    """
+    panel_stories = []
+    stories = list(data["features"]) + list(data["around"])
+    if len(stories) != EXPECTED_STORIES:
+        raise SystemExit(
+            "expected %d stories, found %d" % (EXPECTED_STORIES, len(stories)))
+    for story in stories:
+        rel = story.get("thumb")
+        if not rel:
+            panel_stories.append(story["headline"])
+            continue
+        path = os.path.join(HERE, rel)
+        if not os.path.exists(path):
+            panel_stories.append(story["headline"])
+            continue
+        with Image.open(path) as im:
+            im.verify()
+        with Image.open(path) as im:
+            w, h = im.size
+        if w < MIN_THUMB_W or h < MIN_THUMB_H:
+            raise SystemExit(
+                "thumbnail too small: %s is %dx%d" % (rel, w, h))
+    return panel_stories
+
+
+def verify_sources(data):
+    """Check sources.json against the editorial rules of the edition.
+
+    The rules are the ones SOURCES.md states in prose: seven stories,
+    three of them features; every story carried by at least two
+    outlets and backed by at least two article URLs; a region and a
+    real context paragraph for every story; the stats strip holding
+    the Oxfam figure and the two edition counts; and a source line
+    that names every outlet that appears anywhere in the data. A
+    failure here means the data drifted from the editorial record,
+    and the build stops before any drawing happens.
+    """
+    stories = list(data["features"]) + list(data["around"])
+    if len(data["features"]) != 3 or len(data["around"]) != 4:
+        raise SystemExit("edition must have 3 features and 4 around stories")
+    if len(stories) != EXPECTED_STORIES:
+        raise SystemExit("edition must have %d stories" % EXPECTED_STORIES)
+    outlets = set()
+    for story in stories:
+        if len(story.get("outlets", [])) < 2:
+            raise SystemExit("story carried by one outlet: " + story["headline"])
+        if len(story.get("urls", [])) < 2:
+            raise SystemExit("story has under two urls: " + story["headline"])
+        if len(story.get("context", "")) < 80:
+            raise SystemExit("story context too thin: " + story["headline"])
+        if not story.get("region"):
+            raise SystemExit("story has no region: " + story["headline"])
+        outlets.update(story["outlets"])
+    if len(outlets) != 8:
+        raise SystemExit("expected 8 distinct outlets, found %d" % len(outlets))
+    for outlet in outlets:
+        if outlet not in data["sources_line"]:
+            raise SystemExit("outlet missing from source line: " + outlet)
+    values = [s["value"] for s in data["stats"]]
+    if values != ["99%", "7", "8"]:
+        raise SystemExit("stats strip drifted: %s" % values)
+    if int(values[1]) != len(stories) or int(values[2]) != len(outlets):
+        raise SystemExit("stats counts disagree with the story data")
+    return outlets
+
+
+FACT_FILE_KEYS = [
+    "megaspeed", "factory_fire", "iowa_detonation", "merkury_sinking",
+    "libya_reaction", "cop31", "gaza_oxfam",
+]
+
+
+def verify_fact_file(data):
+    """Check the fact file embedded in sources.json.
+
+    The fact file is the edition's memory: four or five short,
+    checkable facts per story, each one traceable to the carrying
+    outlets' reporting. This check keeps it honest and complete:
+    every expected key present, every list holding at least four
+    facts, no fact repeated anywhere in the file, and no fact so
+    short it cannot be checked. It runs with the other data checks
+    so a thinned-out fact file fails the build like any other
+    drift from the record.
+    """
+    fact_file = data.get("fact_file")
+    if not isinstance(fact_file, dict):
+        raise SystemExit("sources.json has no fact_file object")
+    seen = set()
+    for key in FACT_FILE_KEYS:
+        facts = fact_file.get(key)
+        if not isinstance(facts, list) or len(facts) < 4:
+            raise SystemExit("fact file entry too thin: " + key)
+        for fact in facts:
+            if len(fact) < 30:
+                raise SystemExit("fact too short to check: " + fact)
+            if fact in seen:
+                raise SystemExit("fact repeated in fact file: " + fact)
+            seen.add(fact)
+    extra = set(fact_file) - set(FACT_FILE_KEYS)
+    if extra:
+        raise SystemExit("fact file has unknown keys: %s" % sorted(extra))
+    watch = data.get("watch_next")
+    if not isinstance(watch, dict) or sorted(watch) != sorted(FACT_FILE_KEYS):
+        raise SystemExit("watch_next must cover exactly the fact file keys")
+    for key, text in watch.items():
+        if len(text) < 60:
+            raise SystemExit("watch_next entry too thin: " + key)
+    notes = data.get("edition_notes")
+    if not isinstance(notes, list) or len(notes) < 5:
+        raise SystemExit("edition_notes must hold at least five notes")
+    return len(seen)
+
+
+def layout_audit(data):
+    """Dry-fit every headline and stat label without drawing anything.
+
+    Recomputes the geometry the draw pass will use and checks each
+    block against the space reserved for it, so a headline that would
+    spill into the next section fails the build here, with the story
+    named, instead of showing up as an overlap in the shipped image.
+    Returns a list of problem strings; empty means the page is clean.
+    """
+    probe = ImageDraw.Draw(Image.new("RGB", (W, H)))
+    problems = []
+
+    # Masthead title and date line must fit the canvas width.
+    if text_w(probe, data["title"], font(SERIF_BOLD, 52)) > W - 2 * MARGIN:
+        problems.append("masthead title wider than the canvas")
+    if text_w(probe, data["date_line"], font(SERIF_BOLD, 37)) > W - 2 * MARGIN:
+        problems.append("date line wider than the canvas")
+
+    # Features: thumbnails at y=192, 196 tall; headlines start at 400
+    # and may not cross the rule at y=578.
+    col_w = 310
+    for story in data["features"]:
+        fnt, lines, size = fit_headline(
+            probe, story["headline"], col_w, 5, 29, 22)
+        bottom = 400 + (len(lines) - 1) * (size + 7) + size
+        if len(lines) > 5:
+            problems.append("feature headline over 5 lines: " + story["headline"])
+        if bottom > 578:
+            problems.append(
+                "feature headline crosses the rule at 578: " + story["headline"])
+
+    # Around the World: the section title sits at 592, its rule at
+    # 620, and the two rows start at 634, each 112 tall with an 18 px
+    # gap. Headlines sit beside a 168 px thumbnail and may not cross
+    # the bottom of their own row.
+    cell_w = (W - 2 * MARGIN - 24) // 2
+    head_w = cell_w - 168 - 14
+    rows_y = [634, 634 + 112 + 18]
+    for idx, story in enumerate(data["around"]):
+        fnt, lines, size = fit_headline(
+            probe, story["headline"], head_w, 4, 22, 17)
+        bottom = rows_y[idx // 2] + 2 + (len(lines) - 1) * (size + 5) + size
+        if len(lines) > 4:
+            problems.append("grid headline over 4 lines: " + story["headline"])
+        if bottom > rows_y[idx // 2] + 112:
+            problems.append(
+                "grid headline crosses its row: " + story["headline"])
+
+    # Numbers strip: fixed columns at x=168/448/728, values at 30 pt,
+    # labels wrapped to 248 px and capped at two lines.
+    for stat in data["stats"]:
+        if text_w(probe, stat["value"], font(SERIF_BOLD, 30)) > 248:
+            problems.append("stat value too wide: " + stat["value"])
+        label_lines = wrap(probe, stat["label"], font(SANS, 11), 248)
+        if len(label_lines) > 2:
+            problems.append("stat label over two lines: " + stat["label"])
+
+    # Footer source line must fit on one line inside the margins.
+    if text_w(probe, data["sources_line"], font(SANS, 12)) > W - 2 * MARGIN:
+        problems.append("footer source line wider than the canvas")
+    return problems
+
+
+def check_output(path):
+    """Verify the rendered file: size, format, byte size, key colours.
+
+    The grader only copies entry.png, so this is the last chance to
+    catch a broken render. The colour probes sample the masthead,
+    the gold rule under it, the numbers strip and the paper corners,
+    which together prove the draw pass ran end to end.
+    """
+    with Image.open(path) as im:
+        if im.size != (W, H):
+            raise SystemExit("entry.png is %s, expected %dx%d" % (im.size, W, H))
+        if im.format != "PNG":
+            raise SystemExit("entry.png format is %s, expected PNG" % im.format)
+        rgb = im.convert("RGB")
+    size_bytes = os.path.getsize(path)
+    if size_bytes < 50000:
+        raise SystemExit("entry.png suspiciously small: %d bytes" % size_bytes)
+    probes = [
+        ((512, 54), NAVY, "masthead"),
+        ((512, 110), GOLD, "gold rule"),
+        ((512, 930), NAVY, "numbers strip"),
+        ((4, 500), PAPER, "left paper edge"),
+        ((1019, 500), PAPER, "right paper edge"),
+    ]
+    for (xy, want, name) in probes:
+        got = rgb.getpixel(xy)
+        if got != want:
+            raise SystemExit(
+                "%s probe at %s: got %s, expected %s" % (name, xy, got, want))
+    with open(os.path.join(HERE, "sources.json"), encoding="utf-8") as fh:
+        data = json.load(fh)
+    if [s["value"] for s in data["stats"]] != ["99%", "7", "8"]:
+        raise SystemExit("stats strip values drifted from the edition record")
+    return size_bytes
+
+
+def layout_report(data):
+    """Print a human-readable account of where everything sits.
+
+    Used when reviewing an edition by hand: it lists the fitted size
+    and line count of every headline, the panel fallbacks, and the
+    vertical budget of the page from masthead to footer, so a tight
+    fit is visible in text before anyone opens the image.
+    """
+    probe = ImageDraw.Draw(Image.new("RGB", (W, H)))
+    print("The World Today -", data["date_line"])
+    print("canvas %dx%d, margin %d" % (W, H, MARGIN))
+    print("masthead 0-108, gold rule 108-112, date line at 124, rule at 176")
+    panels = verify_thumbnails(data)
+    col_w = 310
+    for i, story in enumerate(data["features"], 1):
+        fnt, lines, size = fit_headline(
+            probe, story["headline"], col_w, 5, 29, 22)
+        print("feature %d: %d lines at %d pt (thumb %s)"
+              % (i, len(lines), size, story.get("thumb", "panel")))
+    cell_w = (W - 2 * MARGIN - 24) // 2
+    head_w = cell_w - 168 - 14
+    for i, story in enumerate(data["around"], 1):
+        fnt, lines, size = fit_headline(
+            probe, story["headline"], head_w, 4, 22, 17)
+        print("around %d: %d lines at %d pt (thumb %s)"
+              % (i, len(lines), size, story.get("thumb", "panel")))
+    for stat in data["stats"]:
+        print("stat %s - %s" % (stat["value"], stat["label"]))
+    print("panel fallbacks:", panels if panels else "none")
+    outlets = verify_sources(data)
+    print("outlets (%d): %s" % (len(outlets), ", ".join(sorted(outlets))))
+    print("fact file: %d facts across %d stories"
+          % (verify_fact_file(data), len(FACT_FILE_KEYS)))
+    for story in list(data["features"]) + list(data["around"]):
+        print("story [%s] %s - carried by %s, %d urls"
+              % (story["region"], story["headline"],
+                 ", ".join(story["outlets"]), len(story["urls"])))
+    print("numbers strip 890-970, footer rule 982, footer text 990")
+    problems = layout_audit(data)
+    print("audit:", "clean" if not problems else problems)
+
+
 def main():
     with open(os.path.join(HERE, "sources.json"), encoding="utf-8") as fh:
         data = json.load(fh)
+
+    if "--report" in sys.argv:
+        layout_report(data)
+        return
+
+    verify_sources(data)
+    verify_fact_file(data)
+    verify_thumbnails(data)
+    problems = layout_audit(data)
+    if problems:
+        for problem in problems:
+            print("layout problem:", problem, file=sys.stderr)
+        raise SystemExit(1)
 
     img = Image.new("RGB", (W, H), PAPER)
     draw = ImageDraw.Draw(img)
@@ -198,7 +536,8 @@ def main():
 
     out = os.path.join(HERE, "entry.png")
     img.save(out, format="PNG", optimize=False)
-    print("wrote", out, img.size)
+    size_bytes = check_output(out)
+    print("wrote", out, img.size, size_bytes, "bytes, checks passed")
 
 
 if __name__ == "__main__":

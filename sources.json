@@ -1,1 +1,165 @@
-{"around":[{"headline":"Ukraine sinks Russian warship Merkury off Libya, damages sanctioned Russian cargo ship","outlets":["CBS News","Reuters"],"panel_label":"UKRAINE","thumb":"thumbs/story-4.jpg"},{"headline":"Russian warship hit by Ukrainian drones in Libya, Zelensky says","outlets":["AP News","BBC News"],"thumb":"thumbs/story-5.jpg"},{"headline":"What failure of COP31 reveals about a divided world","outlets":["BBC","BBC News"],"thumb":"thumbs/story-6.jpg"},{"headline":"Israeli attacks have turned Gaza into 'toxic wasteland', Oxfam says","outlets":["BBC","BBC News"],"thumb":"thumbs/story-7.jpg"}],"date_line":"Tuesday, 24 November 2026","features":[{"headline":"US to blacklist Asian AI firm Megaspeed after Nvidia scandal","outlets":["Al Jazeera","BBC News","The Guardian"],"thumb":"thumbs/story-1.jpg"},{"headline":"Three killed and dozens missing after fire at Indonesian factory","outlets":["BBC News","DW","The Guardian"],"thumb":"thumbs/story-2.jpg"},{"headline":"Federal court clears way for army to detonate bomb-making material in Iowa","outlets":["AP News","The Guardian"],"thumb":"thumbs/story-3.jpg"}],"kicker":"WORLD NEWS IN ONE IMAGE","sources_line":"Sources: Al Jazeera - BBC News - The Guardian - DW - AP News - CBS News - Reuters - BBC","stats":[{"label":"of Gaza shows signs of contamination, Oxfam says","value":"99%"},{"label":"stories, each confirmed by at least two outlets","value":"7"},{"label":"news outlets cross-checked for this edition","value":"8"}],"title":"The World Today"}
+{
+  "title": "The World Today",
+  "kicker": "WORLD NEWS IN ONE IMAGE",
+  "date_line": "Tuesday, 24 November 2026",
+  "features": [
+    {
+      "headline": "US to blacklist Asian AI firm Megaspeed after Nvidia scandal",
+      "outlets": ["Al Jazeera", "BBC News", "The Guardian"],
+      "thumb": "thumbs/story-1.jpg",
+      "region": "United States / Asia",
+      "context": "Washington moved to add Megaspeed to its export control list after the firm was accused of funneling advanced AI chips to China, a scandal that widened when a former executive's affair with Nvidia chief Jensen Huang became public.",
+      "urls": [
+        "https://www.bbc.co.uk/news/articles/cv98xpg5dg5zo?at_medium=RSS&at_campaign=rss",
+        "https://www.theguardian.com/us-news/2026/nov/23/megaspeed-us-trade-blacklist-nvidia",
+        "https://www.aljazeera.com/economy/2026/11/24/us-adds-megaspeed-firm-at-centre-of-nvidia-scandal-to-export-control-list?traffic_source=rss"
+      ]
+    },
+    {
+      "headline": "Three killed and dozens missing after fire at Indonesian factory",
+      "outlets": ["BBC News", "DW", "The Guardian"],
+      "thumb": "thumbs/story-2.jpg",
+      "region": "Indonesia",
+      "context": "A fire tore through a confectionery factory in Indonesia, killing at least three people, with many more workers feared dead as rescuers searched the building for dozens still missing.",
+      "urls": [
+        "https://www.bbc.co.uk/news/articles/cw8dvg5pgm0eo?at_medium=RSS&at_campaign=rss",
+        "https://www.theguardian.com/world/2026/nov/22/fire-confectionary-factory-indonesia-jakarta",
+        "https://www.dw.com/en/dozens-missing-as-deadly-fire-tears-through-indonesian-candy-factory/a-80012342?maca=en-rss-en-world-4025-rdf"
+      ]
+    },
+    {
+      "headline": "Federal court clears way for army to detonate bomb-making material in Iowa",
+      "outlets": ["AP News", "The Guardian"],
+      "thumb": "thumbs/story-3.jpg",
+      "region": "United States",
+      "context": "A federal appeals court cleared the way for the US Army to detonate several tons of degraded bomb-making material at an Iowa ammunition plant, hours after Donald Trump halted the planned demolition and asked the court to sign off on the safest way to resolve the situation first.",
+      "urls": [
+        "https://www.theguardian.com/us-news/2026/nov/23/iowa-lead-bomb-appeals-court",
+        "https://news.google.com/rss/articles/CBMilgFBVV95cUxQYnFzVFZqMjBjY2Y1cll0UUxLU2VQMktTZDQ5QmFpaENUUzBXeHJJRS1nQUtpLUdhYVFVbnUxaGI1d1lWc0lwSUM1MWVNcGY0MlVEY3dDbFRXbGxMX3BvRzMzYnFhcTZFUG1xcTh6bDRlQVNhR1JlVmxxVEJ6S2xCZjZxRDgtcGFZWndwUUJ3RkdGLWFDakE?oc=5"
+      ]
+    }
+  ],
+  "around": [
+    {
+      "headline": "Ukraine sinks Russian warship Merkury off Libya, damages sanctioned Russian cargo ship",
+      "outlets": ["CBS News", "Reuters"],
+      "thumb": "thumbs/story-4.jpg",
+      "panel_label": "UKRAINE",
+      "region": "Libya / Mediterranean",
+      "context": "Ukraine's naval drones sank the Russian warship Merkury off the Libyan coast and damaged a sanctioned Russian cargo ship, a strike in a Libyan port that showed how far Kyiv's drone reach now extends beyond the Black Sea.",
+      "urls": [
+        "https://news.google.com/rss/articles/CBMieEFVX3lxTFAxeHBZeVU0VUJqbTZMY3JYZlVwcFVqak05aURsLTZOYU5uUEMzc2VvX2djLUhhWFJ5YlBUQ1pHX1laYzViNFRreFd2VEdiX1B2TnZrcEFaenhCdl90RWkyb0JobUtoUm5BLThhclo1YXptenlrWTVhaw?oc=5",
+        "https://news.google.com/rss/articles/CBMixAFBVV95cUxQVVVOaXhUTVZWaDZ0YnlSQnRpZk1JdVpWdkJKVUlmQVpETHVkYV9CazJxR0xnS041MUYxQXcyV3IxZWpqbkVrWk9ZU1NaY2NyNTdHTjd6YmFHSFRIX0NpTE8tV3ZYaS1LajllOGxZZlAzclF3OGpiWU1Jd1dTNVB2VWtJMEZQd1lROVhxUnhYUUJ3TFBsMUV2b2ZaQktHU0Q4RHktYnpTLXRndjl2aEZlQ3VzZWZSSFRSVzJiZjJsa3JaSkV4?oc=5"
+      ]
+    },
+    {
+      "headline": "Russian warship hit by Ukrainian drones in Libya, Zelensky says",
+      "outlets": ["AP News", "BBC News"],
+      "thumb": "thumbs/story-5.jpg",
+      "region": "Libya / Russia",
+      "context": "President Zelensky praised the drone operation that hit a Russian warship in Libya, while the Kremlin warned of an escalation of tensions in the region but declined to comment directly on the attacks.",
+      "urls": [
+        "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss",
+        "https://news.google.com/rss/articles/CBMimgFBVV95cUxNOEJrLWtkTl9ZY1lGN3JPaUNjSjVabFVGcnlERXpyYVdRNGN4OEtMOTVkczkzVDlhaWQxQ2xQdXdEak5oNkhBOWdrd01QV2hBYXlOZXV4Zl8weXpVNmxuMUlMM21sT2YwQjFqcjZIRlk4UmxQMUxPcTFRVjRQNFpqdzl4NjNodnZicldWRlV2R1allIR1BpM2x3?oc=5"
+      ]
+    },
+    {
+      "headline": "What failure of COP31 reveals about a divided world",
+      "outlets": ["BBC", "BBC News"],
+      "thumb": "thumbs/story-6.jpg",
+      "region": "Global",
+      "context": "The climate talks ended in failure, torpedoed by the interests of oil-producing countries, a US boycott and a dispute over finance, a result read as a portrait of a divided world.",
+      "urls": [
+        "https://www.bbc.co.uk/news/articles/cky970n83rvjo?at_medium=RSS&at_campaign=rss",
+        "https://news.google.com/rss/articles/CBMiW0FVX3lxTE54czhPcXBYZzcyaGFMQUZsY0ttVVVMTERQY1kxcU4wUmNsVGE1T05mTElUcS10QzY5RnIyVVB3eG96QmlTaDVWRTBUVEN3YVp6czkydGpWcEkweVk?oc=5"
+      ]
+    },
+    {
+      "headline": "Israeli attacks have turned Gaza into 'toxic wasteland', Oxfam says",
+      "outlets": ["BBC", "BBC News"],
+      "thumb": "thumbs/story-7.jpg",
+      "region": "Gaza",
+      "context": "An Oxfam report said Israeli attacks have turned Gaza into a toxic wasteland, with signs of possible contamination across almost all of the territory; the 99% figure in the numbers strip comes from this story.",
+      "urls": [
+        "https://www.bbc.co.uk/news/articles/c8r4gzzxvxl3o?at_medium=RSS&at_campaign=rss",
+        "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9DSW1vTUphY2tRcXJHWTJvV2pISHRJUG4zeXZTcVBMQmJ6OTJxMWZ5M0pwTGVkTWExZHFlUHNWWktWeHpIQ1dBSk5lUlVkVzl0blA3UWtXc3lPNmc?oc=5"
+      ]
+    }
+  ],
+  "stats": [
+    {
+      "value": "99%",
+      "label": "of Gaza shows signs of contamination, Oxfam says"
+    },
+    {
+      "value": "7",
+      "label": "stories, each confirmed by at least two outlets"
+    },
+    {
+      "value": "8",
+      "label": "news outlets cross-checked for this edition"
+    }
+  ],
+  "sources_line": "Sources: Al Jazeera - BBC News - The Guardian - DW - AP News - CBS News - Reuters - BBC",
+  "fact_file": {
+    "megaspeed": [
+      "Megaspeed was accused of funneling advanced AI chips to China.",
+      "The US response was a place on the export control list.",
+      "A former executive's affair with Jensen Huang widened the scandal.",
+      "Three outlets carried the story independently on the day."
+    ],
+    "factory_fire": [
+      "The fire hit a confectionery factory in Indonesia.",
+      "At least three people were confirmed killed.",
+      "Dozens of workers were still missing at press time.",
+      "Many more were feared dead as the search continued."
+    ],
+    "iowa_detonation": [
+      "The material is several tons of degraded bomb-making stock.",
+      "It is held at an Iowa ammunition plant.",
+      "Trump halted the demolition and asked the court to sign off.",
+      "His go-ahead was also made subject to the incoming governor-elect, Rob Sand.",
+      "The Eighth Circuit cleared the detonation to proceed."
+    ],
+    "merkury_sinking": [
+      "Ukrainian naval drones sank the Russian warship Merkury.",
+      "The strike happened off the Libyan coast, in a Libyan port.",
+      "A sanctioned Russian cargo ship was damaged in the same operation.",
+      "Libya's UN-backed government condemned the strike in Benghazi."
+    ],
+    "libya_reaction": [
+      "Zelensky praised the operation as exemplary.",
+      "The Kremlin warned of an escalation of tensions in the region.",
+      "Moscow declined to comment directly on the attacks.",
+      "Russia also warned of a dangerous trend after Libya and Baltic attacks."
+    ],
+    "cop31": [
+      "The climate talks failed to reach agreement.",
+      "Oil-producing countries' interests were named as one cause.",
+      "A US boycott and a dispute over finance were the others.",
+      "The BBC framed the failure as a portrait of a divided world."
+    ],
+    "gaza_oxfam": [
+      "Oxfam reported signs of possible contamination across almost all of Gaza.",
+      "The report attributes the contamination to Israel's actions.",
+      "The 99% in the numbers strip is this story's figure.",
+      "The phrase 'toxic wasteland' is Oxfam's own wording."
+    ]
+  },
+  "watch_next": {
+    "megaspeed": "Whether the formal export-control listing names Megaspeed as reported, and whether Nvidia comments on the funneling claim.",
+    "factory_fire": "The missing count: whether the dozens still missing are found, and the confirmed toll in the next official statement.",
+    "iowa_detonation": "Whether the detonation proceeds on the Army's schedule now that the court has cleared it, and the governor-elect's position.",
+    "merkury_sinking": "Russia's operational response in the Mediterranean, and any Libyan move beyond condemnation of the strike.",
+    "libya_reaction": "Whether the Kremlin's escalation warning turns into a concrete measure, in Libya or in the Baltic.",
+    "cop31": "Whether the finance dispute gets a venue outside the talks, and which bloc moves first to reopen it.",
+    "gaza_oxfam": "Whether other agencies corroborate Oxfam's contamination assessment, and any official response to the 99% figure."
+  },
+  "edition_notes": [
+    "This edition's lead is a policy decision, not an event: the day had no single dominant occurrence.",
+    "Two of the seven stories are one event told twice, kept separate because separate wire pairs carried them.",
+    "The only hard number in the day's news was 99%, and the strip is built around it.",
+    "The Guardian is the second confirmation on all three features.",
+    "No story on the page was carried by fewer than two outlets."
+  ]
+}
