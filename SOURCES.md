@@ -109,31 +109,31 @@ form.
 
 ## What we did not print
 
-For each story, the fact that stayed off the page and why. The
-page has no body text, so every story leaves almost everything
-out; these are the omissions a reader is most likely to wonder
-about.
+The fact left off the page for each story, and the reason. A
+page without body text omits nearly everything by construction;
+these are the omissions a reader would most plausibly ask about.
 
-- **Megaspeed:** the mechanics of the alleged funneling. The
-  accusation is printed; the routing detail lives in the linked
-  reporting, because a one-image page cannot carry it honestly.
-- **Factory fire:** the factory's name and owner. The wires led
-  with the toll and the missing, and the page follows the wires.
-- **Iowa:** the tonnage is described as "several tons" because
-  that is the figure the carriers agreed on; a more precise
-  number appeared in single-outlet copy and was not printed.
-- **Merkury:** the drone type and launch point. CBS and Reuters
-  carried the sinking and the damage; the technical detail was
-  not in both, so it is not on the page.
-- **Libya reaction:** Libya's own condemnation is in the context
-  record but not the headline, which belongs to the two principals
-  the wire pair named.
-- **COP31:** the country-by-country positions. An analysis story
-  summarises blocs; the page prints the summary, not the roll
-  call.
-- **Gaza:** the report's methodology. The 99% is printed with its
-  attribution (Oxfam says) precisely because the page cannot show
-  the working.
+- **Megaspeed:** how the alleged funneling worked. The page
+  prints the accusation; the routing detail stays in the linked
+  reporting, because an honest one-image page cannot carry it.
+- **Factory fire:** the factory's name and its owner. The wires
+  led with the toll and the missing, and the page follows the
+  wires.
+- **Iowa:** an exact tonnage. "Several tons" is the figure both
+  carriers agreed on; a more precise number ran in one outlet's
+  copy only, and single-outlet numbers do not reach the page.
+- **Merkury:** the drone type and where it launched from. Both
+  carriers reported the sinking and the damage; the technical
+  detail was not in both, so the page does not carry it.
+- **Libya reaction:** Libya's condemnation sits in the context
+  record rather than the headline, which belongs to the two
+  principals the wire pair named.
+- **COP31:** positions country by country. An analysis
+  summarises blocs; the page prints the summary and leaves the
+  roll call to the linked reporting.
+- **Gaza:** how the report reached its figure. The 99% runs
+  with its attribution (Oxfam says) precisely because the page
+  cannot show the working behind it.
 
 ## Headline fidelity
 
