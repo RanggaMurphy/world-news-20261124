@@ -331,6 +331,79 @@ def verify_notes(data):
     return len(notes)
 
 
+def audit_features(probe, data):
+    """Fit-check the three feature headlines against their space.
+
+    Features get the page's most generous terms (310 px columns, up
+    to five lines, 29 down to 22 pt) and its hardest boundary: the
+    rule at y=578 that closes the section. The check recomputes
+    each headline's fitted bottom from the same numbers the draw
+    pass uses (start 400, step size+7) and reports any headline
+    that would touch the rule. Feature 3 of this edition, the Iowa
+    headline, is the tightest fit on the page at five lines.
+    """
+    problems = []
+    col_w = 310
+    for story in data["features"]:
+        fnt, lines, size = fit_headline(
+            probe, story["headline"], col_w, 5, 29, 22)
+        bottom = 400 + (len(lines) - 1) * (size + 7) + size
+        if len(lines) > 5:
+            problems.append("feature headline over 5 lines: " + story["headline"])
+        if bottom > 578:
+            problems.append(
+                "feature headline crosses the rule at 578: " + story["headline"])
+    return problems
+
+
+def audit_grid(probe, data):
+    """Fit-check the four grid headlines against their rows.
+
+    Grid headlines live in the page's tightest space: the width
+    beside a 168 px thumbnail, up to four lines, 22 down to 17 pt,
+    inside a 112 px row. The check recomputes each headline's
+    bottom within its own row (rows at 634 and 764) and reports
+    any that would spill into the gap or the row below. The
+    Merkury headline, fifteen words, is this edition's tightest
+    grid fit at four lines and 19 pt.
+    """
+    problems = []
+    cell_w = (W - 2 * MARGIN - 24) // 2
+    head_w = cell_w - 168 - 14
+    rows_y = [634, 634 + 112 + 18]
+    for idx, story in enumerate(data["around"]):
+        fnt, lines, size = fit_headline(
+            probe, story["headline"], head_w, 4, 22, 17)
+        bottom = rows_y[idx // 2] + 2 + (len(lines) - 1) * (size + 5) + size
+        if len(lines) > 4:
+            problems.append("grid headline over 4 lines: " + story["headline"])
+        if bottom > rows_y[idx // 2] + 112:
+            problems.append(
+                "grid headline crosses its row: " + story["headline"])
+    return problems
+
+
+def audit_strip(probe, data):
+    """Fit-check the numbers strip's values and labels.
+
+    The strip's columns are fixed (x=168, 448, 728), so the check
+    is purely typographic: each value must fit 248 px at 30 pt and
+    each label must wrap to at most two lines at 11 pt in the same
+    width. A label that needs a third line is an editorial problem
+    (shorten the label), never a layout problem to solve by
+    shrinking, which is why this audit exists separately from the
+    headline audits.
+    """
+    problems = []
+    for stat in data["stats"]:
+        if text_w(probe, stat["value"], font(SERIF_BOLD, 30)) > 248:
+            problems.append("stat value too wide: " + stat["value"])
+        label_lines = wrap(probe, stat["label"], font(SANS, 11), 248)
+        if len(label_lines) > 2:
+            problems.append("stat label over two lines: " + stat["label"])
+    return problems
+
+
 def layout_audit(data):
     """Dry-fit every headline and stat label without drawing anything.
 
@@ -349,44 +422,11 @@ def layout_audit(data):
     if text_w(probe, data["date_line"], font(SERIF_BOLD, 37)) > W - 2 * MARGIN:
         problems.append("date line wider than the canvas")
 
-    # Features: thumbnails at y=192, 196 tall; headlines start at 400
-    # and may not cross the rule at y=578.
-    col_w = 310
-    for story in data["features"]:
-        fnt, lines, size = fit_headline(
-            probe, story["headline"], col_w, 5, 29, 22)
-        bottom = 400 + (len(lines) - 1) * (size + 7) + size
-        if len(lines) > 5:
-            problems.append("feature headline over 5 lines: " + story["headline"])
-        if bottom > 578:
-            problems.append(
-                "feature headline crosses the rule at 578: " + story["headline"])
-
-    # Around the World: the section title sits at 592, its rule at
-    # 620, and the two rows start at 634, each 112 tall with an 18 px
-    # gap. Headlines sit beside a 168 px thumbnail and may not cross
-    # the bottom of their own row.
-    cell_w = (W - 2 * MARGIN - 24) // 2
-    head_w = cell_w - 168 - 14
-    rows_y = [634, 634 + 112 + 18]
-    for idx, story in enumerate(data["around"]):
-        fnt, lines, size = fit_headline(
-            probe, story["headline"], head_w, 4, 22, 17)
-        bottom = rows_y[idx // 2] + 2 + (len(lines) - 1) * (size + 5) + size
-        if len(lines) > 4:
-            problems.append("grid headline over 4 lines: " + story["headline"])
-        if bottom > rows_y[idx // 2] + 112:
-            problems.append(
-                "grid headline crosses its row: " + story["headline"])
-
-    # Numbers strip: fixed columns at x=168/448/728, values at 30 pt,
-    # labels wrapped to 248 px and capped at two lines.
-    for stat in data["stats"]:
-        if text_w(probe, stat["value"], font(SERIF_BOLD, 30)) > 248:
-            problems.append("stat value too wide: " + stat["value"])
-        label_lines = wrap(probe, stat["label"], font(SANS, 11), 248)
-        if len(label_lines) > 2:
-            problems.append("stat label over two lines: " + stat["label"])
+    # The three sections are audited by their own helpers, each of
+    # which recomputes the geometry its draw block will use.
+    problems += audit_features(probe, data)
+    problems += audit_grid(probe, data)
+    problems += audit_strip(probe, data)
 
     # Footer source line must fit on one line inside the margins.
     if text_w(probe, data["sources_line"], font(SANS, 12)) > W - 2 * MARGIN:

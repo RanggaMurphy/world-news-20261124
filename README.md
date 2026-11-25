@@ -39,6 +39,13 @@ The day in one look:
 - `GAZETTEER.md` - notes on the places the headlines name.
 - `BUILDLOG.md` - how the edition was researched, built and
   verified.
+- `EDITION.md` - the reader's companion to the page.
+- `DOSSIER.md` - index of the per-story dossiers in `stories/`.
+- `stories/` - one dossier per story: facts, selection, omissions.
+- `PRESS.md` - the house style: the standing rules every edition
+  follows.
+- `check.py` - the independent checker (data-first verification).
+- `verify.py` - the second verifier (documents-first cross-checks).
 - `thumbs/` - the story thumbnails used by the generator.
 - `entry.png` - the rendered front page.
 
@@ -53,6 +60,11 @@ The day in one look:
 
     python3 render.py --report   # fitted sizes, audit, story record
     python3 check.py              # independent re-derivation + re-render
+    python3 verify.py             # documents-first cross-checks
+
+Two verifiers that share no code start from opposite ends:
+`check.py` from the data, `verify.py` from the documents and the
+per-story dossiers in `stories/`. Both must pass.
 
 The renderer is deterministic: rebuilding from the committed
 `sources.json` and `thumbs/` reproduces `entry.png` byte for byte

@@ -161,5 +161,14 @@
     "The only hard number in the day's news was 99%, and the strip is built around it.",
     "The Guardian is the second confirmation on all three features.",
     "No story on the page was carried by fewer than two outlets."
-  ]
+  ],
+  "desk_notes": {
+    "megaspeed": "Lead from the first pass and never seriously challenged: three carriers, a state decision, and a scandal with a named principal. The desk debate was only about whether the affair belongs in the context paragraph; it does, because the carriers made it part of the story's widening.",
+    "factory_fire": "Held at feature 2 against an argument for leading with it. The toll argument was strong, but at press time the confirmed figure was three and the story's weight was still potential; the centre column honours it without overstating what was known.",
+    "iowa_detonation": "Promoted from the grid on the strength of the reversal. A court clearing a demolition is a grid story; a president halting one and a court unpausing it within one cycle is a feature.",
+    "merkury_sinking": "The grid's lead. The desk considered merging it with the reaction and rejected the merge for the structural reason EDITION.md records: fact and meaning side by side.",
+    "libya_reaction": "Exists as a separate story only because its carrier pair is independent of the sinking's pair. Had AP and BBC not both carried it, the reaction would have folded into story 4's context.",
+    "cop31": "The day's only argument piece, carried on the edition's weakest confirmation pair and disclosed as such in three places. The desk kept it because a page of pure events misreads a day whose largest long-term fact was a failed negotiation.",
+    "gaza_oxfam": "Placed last in the grid deliberately: the page ends on an attributed assessment and its number, not on an argument. The strip's lead figure comes from here, with the attribution repeated in the label."
+  }
 }
