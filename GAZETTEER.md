@@ -125,5 +125,16 @@ keeps the place at the level the wires agreed on, and this entry
 exists to say that the narrower geography is known to matter and
 was deliberately not guessed at.
 
+## Datelines
+
+A closing note on the gazetteer's own discipline: every place in
+this file is named at the precision the two-outlet record
+supports, no finer. Cities appear where the wires named them
+(Jakarta in a URL, Benghazi in the copy), regions where they did
+not, and one place, Washington, appears for its decisions rather
+than its dateline. Precision beyond the record would read as
+knowledge the edition does not have.
+
+
 
 
