@@ -398,6 +398,28 @@ def check_output(path):
     return size_bytes
 
 
+def section_map():
+    """Return the page's section geometry as (name, top, bottom) rows.
+
+    This is the single source of truth the report prints and the
+    audit's constants mirror: masthead, date block, features, grid,
+    strip and footer, with the gaps between them named rather than
+    implied. If a constant in the draw pass ever moves, this map is
+    where the move is recorded first, and DESIGN.md's vertical
+    budget is written from it.
+    """
+    return [
+        ("masthead", 0, 108),
+        ("gold rule", 108, 112),
+        ("date block", 112, 176),
+        ("features", 192, 578),
+        ("grid title", 592, 620),
+        ("grid rows", 634, 876),
+        ("numbers strip", 890, 970),
+        ("footer", 982, 1002),
+    ]
+
+
 def layout_report(data):
     """Print a human-readable account of where everything sits.
 
@@ -409,6 +431,8 @@ def layout_report(data):
     probe = ImageDraw.Draw(Image.new("RGB", (W, H)))
     print("The World Today -", data["date_line"])
     print("canvas %dx%d, margin %d" % (W, H, MARGIN))
+    for name, top, bottom in section_map():
+        print("section %-14s %4d-%4d" % (name, top, bottom))
     print("masthead 0-108, gold rule 108-112, date line at 124, rule at 176")
     panels = verify_thumbnails(data)
     col_w = 310

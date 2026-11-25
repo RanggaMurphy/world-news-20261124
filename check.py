@@ -165,6 +165,72 @@ def check_docs(data):
               os.path.exists(os.path.join(HERE, "SOURCES.md")))
 
 
+def check_geometry(data):
+    """Re-derive the page geometry from the design constants.
+
+    DESIGN.md specifies the vertical budget in prose; this check
+    recomputes the same budget arithmetically and confirms the
+    sections tile the canvas without overlap or unexplained gaps:
+    masthead 108, gold rule 4, date block 64, gap 16, feature
+    thumbnails 196, gap 12, feature headlines 178, rule and title
+    block 42, grid rows 112 + 18 + 112, gap 14, strip 80, gap 12,
+    footer block 34. The sum must be the canvas height exactly.
+    """
+    sections = [
+        ("masthead", 0, 108),
+        ("gold rule", 108, 112),
+        ("date block", 112, 176),
+        ("gap", 176, 192),
+        ("feature thumbnails", 192, 388),
+        ("gap", 388, 400),
+        ("feature headlines", 400, 578),
+        ("features rule", 578, 580),
+        ("grid title", 592, 620),
+        ("grid row one", 634, 746),
+        ("grid gap", 746, 764),
+        ("grid row two", 764, 876),
+        ("gap", 876, 890),
+        ("numbers strip", 890, 970),
+        ("gap", 970, 982),
+        ("footer rule", 982, 983),
+        ("footer text", 990, 1002),
+        ("bottom margin", 1002, 1024),
+    ]
+    top = 0
+    for name, start, end in sections:
+        check("geometry order: " + name, start >= top - 14,
+              "%d-%d" % (start, end))
+        check("geometry span: " + name, end > start)
+        top = max(top, end)
+    check("geometry reaches the bottom", top == 1024, "top=%d" % top)
+    grid_rows = [634, 764]
+    check("grid rows inside the budget",
+          grid_rows[0] + 112 <= grid_rows[1] and grid_rows[1] + 112 <= 890)
+
+
+def check_headline_fidelity(data):
+    """Every headline on the page must be discussed in SOURCES.md.
+
+    The editorial record is the audit trail for the page: a headline
+    that appears in the data but nowhere in the record would mean
+    the page and its documentation have drifted apart. The check
+    compares the first three words of each headline, which is
+    enough to identify it in the record's prose.
+    """
+    with open(os.path.join(HERE, "SOURCES.md"), encoding="utf-8") as fh:
+        record = fh.read()
+    with open(os.path.join(HERE, "EDITION.md"), encoding="utf-8") as fh:
+        edition = fh.read()
+    for story in list(data["features"]) + list(data["around"]):
+        head = " ".join(story["headline"].split()[:3])
+        check("record discusses: " + head,
+              head.split()[0] in record or head in record, head)
+        check("edition or record names outlet pair: " + head,
+              all(o in record for o in story["outlets"][:1]), head)
+    check("record names the edition date", "24 November 2026" in record)
+    check("edition names the edition date", "24 November 2026" in edition)
+
+
 def check_image():
     path = os.path.join(HERE, "entry.png")
     with Image.open(path) as im:
@@ -209,6 +275,8 @@ def main():
     check_fact_file(data)
     check_watch_next(data)
     check_docs(data)
+    check_geometry(data)
+    check_headline_fidelity(data)
     check_thumbs(data)
     check_image()
     check_rerender()

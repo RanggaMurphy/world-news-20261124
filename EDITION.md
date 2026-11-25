@@ -105,6 +105,27 @@ only figure on the page that comes from the world rather than
 from the paper's own counting, and it is placed last so the page
 ends on evidence rather than opinion.
 
+## The page in other hands
+
+Three readers are worth designing for explicitly, because the
+format serves each of them differently:
+
+- **The scanner** gives the page five seconds. For them the page
+  is the masthead, the date and the three feature headlines, and
+  the design rule that follows is the features' font floor: a
+  scanner who cannot read the lead headlines at a glance has been
+  failed by the page, whatever the grid contains.
+- **The checker** arrives suspicious: a number, 99%, looks too
+  round to be true. For them the page is the attribution in the
+  label ("Oxfam says") and the footer line, and the repository
+  behind the page (the record, the URLs, the fact file) is the
+  answer to their suspicion. The image alone cannot satisfy a
+  checker; it is designed to point at what can.
+- **The archivist** arrives in a month. For them the date line's
+  size is the feature: editions of this paper are filed by day,
+  and a page whose day is unmissable files itself. The timeline
+  and the press-time states exist for this reader.
+
 ## If you only read three headlines
 
 For the reader with ten seconds, the page is designed so the

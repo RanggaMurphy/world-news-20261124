@@ -86,6 +86,19 @@ BBC 2, and one each for Al Jazeera, DW, CBS News and Reuters. The
 Guardian is the edition's quiet workhorse: it is the second
 confirmation on all three features.
 
+## Corrections and republication
+
+This note is also the edition's corrections policy, stated before
+it is needed. If an outlet corrects a fact the page printed, the
+correction belongs to the next edition's record, not to a silent
+edit of this one: the repository's history is the audit trail,
+and a changed headline with no trace would break the trail the
+checker verifies. If a correction is material (a toll, a name, a
+decision reversed), the next edition's `SOURCES.md` records it
+against this edition explicitly. The page itself is never
+re-rendered after submission except to prove determinism, which
+by construction changes nothing.
+
 ## How each outlet's copy was used
 
 - **Al Jazeera** supplied the framing of the blacklist as an

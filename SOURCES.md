@@ -107,6 +107,34 @@ form.
 - Gaza / Oxfam: bbc.co.uk/news/articles/c8r4gzzxvxl3o; plus the
   BBC report carried through the Google News wire.
 
+## What we did not print
+
+For each story, the fact that stayed off the page and why. The
+page has no body text, so every story leaves almost everything
+out; these are the omissions a reader is most likely to wonder
+about.
+
+- **Megaspeed:** the mechanics of the alleged funneling. The
+  accusation is printed; the routing detail lives in the linked
+  reporting, because a one-image page cannot carry it honestly.
+- **Factory fire:** the factory's name and owner. The wires led
+  with the toll and the missing, and the page follows the wires.
+- **Iowa:** the tonnage is described as "several tons" because
+  that is the figure the carriers agreed on; a more precise
+  number appeared in single-outlet copy and was not printed.
+- **Merkury:** the drone type and launch point. CBS and Reuters
+  carried the sinking and the damage; the technical detail was
+  not in both, so it is not on the page.
+- **Libya reaction:** Libya's own condemnation is in the context
+  record but not the headline, which belongs to the two principals
+  the wire pair named.
+- **COP31:** the country-by-country positions. An analysis story
+  summarises blocs; the page prints the summary, not the roll
+  call.
+- **Gaza:** the report's methodology. The 99% is printed with its
+  attribution (Oxfam says) precisely because the page cannot show
+  the working.
+
 ## Headline fidelity
 
 Headlines were taken from the carrying outlets as published. The

@@ -101,4 +101,29 @@ decisions about chips and explosives bookend the features. The
 gazetteer names it so the map of the day is honest about where
 its power sat.
 
+## Kyiv and Moscow
+
+The reaction story is a two-capital story. Kyiv's part is a
+president praising a drone operation by name; Moscow's part is a
+warning phrased generally, about a trend rather than a single
+strike, with a refusal to comment on the specific attacks. The
+gazetteer records both capitals because the story's geography is
+diplomatic, not physical: nothing happened in either city, and
+everything about the story's meaning did. That is also why the
+story sits in the grid rather than the features: its facts are
+statements, and statements get half weight on this page unless
+two wires treat them as the event itself.
+
+## The factory's district
+
+The fire coverage names Indonesia and, in the Guardian's dating,
+Jakarta. Industrial fires of this kind are a district story
+before they are a national one: the plant, its workforce and its
+shift pattern decide the toll. The record available on the day
+did not name the district in two-outlet copy, so the gazetteer
+keeps the place at the level the wires agreed on, and this entry
+exists to say that the narrower geography is known to matter and
+was deliberately not guessed at.
+
+
 
