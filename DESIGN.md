@@ -131,6 +131,24 @@ Every gap in that budget is deliberate. A page with no body text
 has nothing to absorb a layout error, so the whitespace is part
 of the specification, not what is left over.
 
+## Colour, and why these three
+
+The palette is three colours and a paper. Navy carries authority
+without black's finality; it is the colour of the masthead and
+the strip, the two bands that frame the news. Gold is used only
+where a line must be seen but not read: the rule under the
+masthead, the globe on a panel, the strip's small label. It never
+sets a headline. Paper is a warm off-white rather than a screen
+white, because the page quotes a printed object and because ink
+on warm paper keeps its contrast at thumbnail size, where many
+readers will actually meet this image. Ink is a near-black with
+a blue bias, chosen to sit calmly next to the navy. No other
+colours are admitted, including in the panels: a photograph
+brings its own colours, and the drawn parts of the page refuse
+to compete with them. The colour probes in the output check
+sample exactly these decisions, masthead, rule, strip and paper,
+so a palette drift fails the build like a geometry drift.
+
 ## What the audit cannot see
 
 The audit proves fit, not quality. It cannot tell whether a
