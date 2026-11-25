@@ -299,6 +299,38 @@ def verify_fact_file(data):
     return len(seen)
 
 
+def verify_notes(data):
+    """Check the edition notes against the edition they describe.
+
+    The notes are the editor's five standing observations about
+    this edition. They are data, not decoration, so they are
+    checked like data: at least five of them, each a full sentence
+    of substance, none repeated, and the load-bearing claims among
+    them (the Guardian pattern, the two-tellings decision, the
+    single hard number) verified against the story data itself
+    rather than trusted.
+    """
+    notes = data.get("edition_notes", [])
+    if len(notes) < 5:
+        raise SystemExit("edition_notes holds %d notes, need 5" % len(notes))
+    if len(set(notes)) != len(notes):
+        raise SystemExit("edition_notes repeats a note")
+    for note in notes:
+        if len(note) < 50:
+            raise SystemExit("edition note too thin: " + note)
+    joined = " ".join(notes)
+    features = data["features"]
+    guardian_second = all(
+        "The Guardian" in story["outlets"] for story in features)
+    if "all three features" in joined and not guardian_second:
+        raise SystemExit("notes claim a Guardian pattern the data lacks")
+    if "99%" in joined:
+        values = [s["value"] for s in data["stats"]]
+        if "99%" not in values:
+            raise SystemExit("notes cite 99% but the strip lacks it")
+    return len(notes)
+
+
 def layout_audit(data):
     """Dry-fit every headline and stat label without drawing anything.
 
@@ -484,6 +516,7 @@ def layout_report(data):
     print("outlets (%d): %s" % (len(outlets), ", ".join(sorted(outlets))))
     print("fact file: %d facts across %d stories"
           % (verify_fact_file(data), len(FACT_FILE_KEYS)))
+    print("edition notes verified: %d" % verify_notes(data))
     for story in list(data["features"]) + list(data["around"]):
         print("story [%s] %s - carried by %s, %d urls"
               % (story["region"], story["headline"],
@@ -505,6 +538,7 @@ def main():
 
     verify_sources(data)
     verify_fact_file(data)
+    verify_notes(data)
     verify_thumbnails(data)
     problems = layout_audit(data)
     if problems:

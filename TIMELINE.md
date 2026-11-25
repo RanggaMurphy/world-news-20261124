@@ -101,6 +101,34 @@ merged the two Libya stories into one larger one and freed a
 grid slot). None had landed; the watch list in `sources.json`
 records them for the next edition.
 
+## Production sequence, as run
+
+The order the edition's own work actually flowed, for comparison
+with the idealised sequence in BUILDLOG.md:
+
+1. The research record for 24 November was assembled from the
+   day's feeds, with carriers noted per story.
+2. The selection fell out of the two-outlet rule with little
+   argument: three three-carrier or reversal stories led, and
+   the grid took the rest in wire order.
+3. The data file was written from the record, and the thumbnails
+   were fetched and checked against the size floor.
+4. The page was drawn, read, and drawn again after the strip was
+   given fixed columns, the one layout change this edition
+   needed.
+5. The entrypoint was exercised the three ways, the image was
+   committed, and the edition was submitted.
+6. The documentation set and the verification tooling were then
+   completed around the committed edition, and the entry was
+   resubmitted inside its window with the fuller record, the
+   image unchanged.
+
+Step 6 is unusual and is recorded plainly: the competition
+counts the last submission before the deadline, and the fuller
+record makes the edition's provenance match the standard the
+paper claims for itself. The image, the stories and the numbers
+never changed between the two submissions.
+
 ## Each story's confirmation path
 
 How each story crossed the two-outlet line, in the order the

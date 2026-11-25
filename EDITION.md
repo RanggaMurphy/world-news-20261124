@@ -126,6 +126,30 @@ format serves each of them differently:
   and a page whose day is unmissable files itself. The timeline
   and the press-time states exist for this reader.
 
+## A glossary for this edition
+
+Terms the page and its documents use in specific senses:
+
+- **Carrier** - an outlet that published the story on the day.
+  A story's carriers are listed in `sources.json` and counted by
+  the checker; nothing is a carrier by reputation.
+- **Feature** - one of the three lead stories, given a full
+  column, a large thumbnail and up to five headline lines.
+- **Grid story** - one of the four Around the World stories, at
+  half weight: a small thumbnail and up to four headline lines.
+- **Panel** - the drawn fallback for a story without a usable
+  photograph: navy field, gold globe, white label. Defined for
+  one story in this edition, drawn for none.
+- **Press time** - the moment the edition's research closed.
+  Facts are stated as they stood at press time, and TIMELINE.md
+  records that state story by story.
+- **The strip** - the By the Numbers band. Its figures are either
+  from the news (attributed in the label) or counts of the
+  edition itself (labelled as counts).
+- **Two-outlet rule** - the selection rule: no story reaches the
+  page on one outlet's reporting. It is the edition's only
+  hard editorial law, and the checker enforces it mechanically.
+
 ## If you only read three headlines
 
 For the reader with ten seconds, the page is designed so the
