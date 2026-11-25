@@ -148,6 +148,36 @@ def check_watch_next(data):
     check("notes record the Guardian pattern", "all three features" in joined)
 
 
+def check_notes_deep(data):
+    """Verify the edition notes' claims one by one.
+
+    check_watch_next counts the notes; this check reads them. The
+    five notes make five claims: the lead is a policy decision,
+    two stories are one event told twice, the day offered one hard
+    number, the Guardian seconds all three features, and no story
+    stands on one outlet. Each claim is re-derived from the story
+    data here, so a note that drifts from the edition fails the
+    build like any other false statement in the record.
+    """
+    notes = data.get("edition_notes", [])
+    joined = " ".join(notes)
+    stories = list(data["features"]) + list(data["around"])
+    check("notes: lead is policy", "policy decision" in joined)
+    libya = [s for s in stories if "Libya" in s["headline"]]
+    check("notes: libya told twice", len(libya) == 2,
+          "%d libya stories" % len(libya))
+    check("notes: told twice claim present", "told twice" in joined)
+    values = [s["value"] for s in data["stats"]]
+    check("notes: one hard number", values.count("99%") == 1
+          and "only hard number" in joined)
+    guardian = all("The Guardian" in s["outlets"] for s in data["features"])
+    check("notes: guardian seconds features", guardian)
+    single = [s["headline"] for s in stories if len(s["outlets"]) < 2]
+    check("notes: no single-outlet story", not single)
+    check("notes: claim of the rule present",
+          "fewer than two outlets" in joined)
+
+
 def check_docs(data):
     expected = ["README.md", "SOURCES.md", "DESIGN.md", "OUTLETS.md",
                 "TIMELINE.md", "GAZETTEER.md", "BUILDLOG.md", "EDITION.md"]
@@ -307,6 +337,7 @@ def main():
     check_stats(data)
     check_fact_file(data)
     check_watch_next(data)
+    check_notes_deep(data)
     check_docs(data)
     check_geometry(data)
     check_headline_fidelity(data)

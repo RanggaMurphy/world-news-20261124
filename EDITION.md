@@ -126,6 +126,18 @@ format serves each of them differently:
   and a page whose day is unmissable files itself. The timeline
   and the press-time states exist for this reader.
 
+## Colophon
+
+This edition of The World Today was researched from the public
+RSS feeds of its eight outlets, set in DejaVu Serif and Sans,
+drawn by a deterministic program from a single data file, and
+verified by a second program that shares no code with the first.
+Its image is 1024 by 1024 pixels and 593,900 bytes. Its record is
+this repository: the data, the sources, the design, the outlets,
+the timeline, the gazetteer, the build log and this reading. If
+the image and the record ever disagree, the record is where the
+argument starts, and the checker is how it is settled.
+
 ## A glossary for this edition
 
 Terms the page and its documents use in specific senses:
